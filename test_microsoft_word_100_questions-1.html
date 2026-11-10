@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Автономный тест по Microsoft Word: 100 вопросов, 60 минут.">
+<title>Тест по Microsoft Word — 100 вопросов</title>
+<style>
+:root{--bg:#f3f6fb;--card:#fff;--ink:#172033;--muted:#64748b;--line:#e2e8f0;--blue:#2563eb;--blue2:#1d4ed8;--green:#15803d;--red:#b91c1c;--soft:#eff6ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+header{background:linear-gradient(120deg,#123b75,#2563eb);color:#fff;padding:26px 18px}
+.wrap{max-width:1120px;margin:auto;padding:0 16px}
+.head{display:flex;align-items:center;justify-content:space-between;gap:18px}
+h1{font-size:clamp(23px,4vw,34px);line-height:1.15;margin:0 0 8px}
+header p{margin:0;color:#dbeafe}
+.logo{font-weight:800;font-size:18px;border:1px solid #ffffff55;border-radius:14px;padding:10px 14px;white-space:nowrap}
+main{padding:24px 0 50px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:20px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 26px #0f172a0a}
+.panel{padding:22px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.stat{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:12px}
+.stat small{display:block;color:var(--muted);font-size:12px}
+.stat strong{font-size:21px;font-variant-numeric:tabular-nums}
+.timer{color:var(--blue2)}
+.timer.warning{color:var(--red)}
+.progress{height:8px;background:#e8eef7;border-radius:99px;overflow:hidden;margin:14px 0 22px}
+.progress>div{height:100%;width:0;background:var(--blue);transition:width .2s}
+.qtop{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px;margin-bottom:12px}
+h2{font-size:21px;line-height:1.35;margin:0 0 20px}
+.answers{display:grid;gap:10px}
+.answer{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-radius:12px;padding:13px 14px;cursor:pointer;transition:.15s;background:#fff}
+.answer:hover{border-color:#93c5fd;background:#f8fbff}
+.answer.selected{border-color:var(--blue);background:var(--soft);box-shadow:0 0 0 1px var(--blue) inset}
+.answer input{margin:4px 0 0;accent-color:var(--blue);width:17px;height:17px;flex:none}
+.letter{font-weight:700;color:var(--blue);min-width:22px}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:24px;flex-wrap:wrap}
+button{font:inherit;border:0;border-radius:10px;padding:11px 17px;cursor:pointer;font-weight:650}
+button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:var(--blue);color:#fff}.primary:hover{background:var(--blue2)}
+.secondary{background:#eef2f7;color:#243247}.ghost{background:#fff;border:1px solid var(--line);color:#334155}
+.sidebar{padding:18px;position:sticky;top:16px}
+.sidehead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sidehead h3{margin:0;font-size:16px}
+.legend{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;background:#e2e8f0}
+.dot.done{background:var(--blue)}.dot.flag{background:#f59e0b}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.qnum{padding:8px 0;background:#f1f5f9;color:#475569;border:1px solid transparent;border-radius:8px;font-size:13px}
+.qnum.current{outline:2px solid var(--blue);background:#eff6ff;color:var(--blue)}
+.qnum.done{background:#dbeafe;color:#1d4ed8}
+.qnum.flagged{box-shadow:inset 0 -3px #f59e0b}
+.side-note{font-size:12px;color:var(--muted);margin:14px 0 0}
+.intro{max-width:760px;margin:0 auto 20px}
+.intro h2{margin:0 0 8px}.intro p{margin:0;color:var(--muted)}
+.startbox{text-align:center;padding:36px 24px}
+.startbox p{max-width:650px;margin:10px auto 22px;color:var(--muted)}
+.hidden{display:none!important}
+.result{text-align:center;padding:34px 24px}
+.score{font-size:56px;font-weight:800;color:var(--blue);line-height:1.1;margin:12px 0}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:600px;margin:24px auto}
+.result-grid div{padding:14px;background:#f8fafc;border:1px solid var(--line);border-radius:12px}
+.result-grid strong{display:block;font-size:22px}
+.review{margin-top:20px;text-align:left}
+.review-item{padding:16px 0;border-top:1px solid var(--line)}
+.review-item h4{margin:0 0 8px}
+.good{color:var(--green);font-weight:700}.bad{color:var(--red);font-weight:700}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.sidebar{position:static;order:-1}.grid{grid-template-columns:repeat(10,1fr)}.head{align-items:flex-start}.logo{display:none}}
+@media(max-width:480px){.panel{padding:16px}.stats{gap:6px}.stat{padding:9px}.stat strong{font-size:18px}.grid{grid-template-columns:repeat(5,1fr)}h2{font-size:19px}.actions button{flex:1}.result-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap head"><div><h1>Тест по Microsoft Word</h1><p>Проверьте знания текстового редактора · 100 вопросов · 60 минут</p></div><div class="logo">WORD · TEST</div></div></header>
+<main class="wrap">
+<section id="intro" class="card startbox">
+  <h2>Готовы начать?</h2>
+  <p>В тесте 100 вопросов с одним правильным вариантом ответа. На выполнение отводится 60 минут. Таймер запускается после нажатия кнопки «Начать тест». Результат и разбор ответов появятся после завершения.</p>
+  <div class="instructions" style="max-width:680px;margin:22px auto;text-align:left;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:18px 20px">
+    <h3 style="margin:0 0 10px;font-size:17px">Инструкция по выполнению теста</h3>
+    <ol style="margin:0;padding-left:22px;color:#334155">
+      <li>Нажмите кнопку «Начать тест» — после этого запустится таймер на 60 минут.</li>
+      <li>Внимательно прочитайте вопрос и выберите один правильный вариант ответа.</li>
+      <li>Для перехода используйте кнопки «Далее» и «Назад» или номера вопросов в блоке «Навигация».</li>
+      <li>Отвеченные вопросы отмечаются синим цветом. Кнопкой «Отметить» можно пометить вопрос, к которому хотите вернуться.</li>
+      <li>Следите за оставшимся временем. По истечении 60 минут тест завершится автоматически.</li>
+      <li>Когда закончите, нажмите «Завершить тест» и подтвердите действие. После завершения изменить ответы будет нельзя.</li>
+      <li>На странице результата вы увидите количество правильных ответов, ошибок и вопросов без ответа. Нажмите «Посмотреть разбор», чтобы проверить правильные ответы.</li>
+    </ol>
+    <p style="margin:12px 0 0;color:#64748b;font-size:13px"><strong>Совет:</strong> если сомневаетесь в ответе, отметьте вопрос и вернитесь к нему позже. Не оставляйте ответы на последние секунды.</p>
+  </div>
+  <button class="primary" id="startBtn">Начать тест</button>
+</section>
+<section id="exam" class="hidden">
+<div class="layout">
+  <div class="card panel">
+    <div class="stats">
+      <div class="stat"><small>Вопрос</small><strong id="counter">1 / 100</strong></div>
+      <div class="stat"><small>Осталось времени</small><strong class="timer" id="timer">60:00</strong></div>
+      <div class="stat"><small>Отвечено</small><strong id="answered">0 / 100</strong></div>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div class="qtop"><span id="questionLabel">Вопрос 1</span><span>Выберите один ответ</span></div>
+    <h2 id="questionText"></h2>
+    <div class="answers" id="answers"></div>
+    <div class="actions">
+      <button class="secondary" id="prevBtn">← Назад</button>
+      <button class="ghost" id="flagBtn">☆ Отметить</button>
+      <button class="primary" id="nextBtn">Далее →</button>
+    </div>
+  </div>
+  <aside class="card sidebar">
+    <div class="sidehead"><h3>Навигация</h3><span id="sideCount" style="font-size:12px;color:#64748b">0/100</span></div>
+    <div class="legend"><span><i class="dot done"></i>Отвечено</span><span><i class="dot flag"></i>Отмечено</span></div>
+    <div class="grid" id="questionGrid"></div>
+    <p class="side-note">Нажмите на номер, чтобы перейти к вопросу. Жёлтая отметка означает, что вопрос помечен для проверки.</p>
+    <button class="primary" style="width:100%;margin-top:18px" id="finishBtn">Завершить тест</button>
+  </aside>
+</div>
+</section>
+<section id="results" class="card result hidden">
+  <h2 id="resultTitle">Тест завершён</h2>
+  <div class="score" id="score">0%</div>
+  <p id="resultText"></p>
+  <div class="result-grid">
+    <div><strong id="correctCount">0</strong><span>Правильных</span></div>
+    <div><strong id="wrongCount">0</strong><span>Неправильных</span></div>
+    <div><strong id="blankCount">0</strong><span>Без ответа</span></div>
+  </div>
+  <button class="primary" id="reviewBtn">Посмотреть разбор</button>
+  <button class="secondary" id="restartBtn">Пройти заново</button>
+  <div class="review hidden" id="review"></div>
+</section>
+</main>
+<footer>Автономный учебный тест. Вопросы предназначены для тренировки навыков работы с Microsoft Word.</footer>
+<script>
+const QUESTIONS = [{"q": "Для чего предназначен Microsoft Word?", "options": ["Для монтажа видео", "Для создания и редактирования текстовых документов", "Для создания презентаций", "Для управления базами данных"], "answer": 1}, {"q": "Какое расширение обычно имеет современный документ Word?", "options": [".xlsx", ".pptx", ".docx", ".txt"], "answer": 2}, {"q": "Какая команда сохраняет документ?", "options": ["Вид → Масштаб", "Файл → Сохранить", "Файл → Печать", "Вставка → Таблица"], "answer": 1}, {"q": "Какое сочетание клавиш сохраняет документ?", "options": ["Ctrl+P", "Ctrl+O", "Ctrl+N", "Ctrl+S"], "answer": 3}, {"q": "Как создать новый документ сочетанием клавиш?", "options": ["Ctrl+N", "Ctrl+F", "Ctrl+E", "Ctrl+W"], "answer": 0}, {"q": "Как открыть существующий документ?", "options": ["Ctrl+K", "Ctrl+O", "Ctrl+L", "Ctrl+M"], "answer": 1}, {"q": "Как распечатать документ?", "options": ["Ctrl+H", "Ctrl+T", "Ctrl+R", "Ctrl+P"], "answer": 3}, {"q": "Как отменить последнее действие?", "options": ["Ctrl+D", "Ctrl+X", "Ctrl+Y", "Ctrl+Z"], "answer": 3}, {"q": "Как повторить отменённое действие?", "options": ["Ctrl+Q", "Ctrl+Y", "Ctrl+G", "Ctrl+Z"], "answer": 1}, {"q": "Как выделить весь текст документа?", "options": ["Ctrl+I", "Ctrl+J", "Ctrl+E", "Ctrl+A"], "answer": 3}, {"q": "Как скопировать выделенный фрагмент?", "options": ["Ctrl+C", "Ctrl+X", "Ctrl+B", "Ctrl+V"], "answer": 0}, {"q": "Как вырезать выделенный фрагмент?", "options": ["Ctrl+V", "Ctrl+C", "Ctrl+X", "Ctrl+S"], "answer": 2}, {"q": "Как вставить содержимое буфера обмена?", "options": ["Ctrl+P", "Ctrl+F", "Ctrl+V", "Ctrl+U"], "answer": 2}, {"q": "Как найти слово в документе?", "options": ["Ctrl+H", "Ctrl+N", "Ctrl+K", "Ctrl+F"], "answer": 3}, {"q": "Какая команда обычно открывает замену текста?", "options": ["Ctrl+G", "Ctrl+E", "Ctrl+H", "Ctrl+M"], "answer": 2}, {"q": "Как сделать текст полужирным?", "options": ["Ctrl+B", "Ctrl+U", "Ctrl+L", "Ctrl+I"], "answer": 0}, {"q": "Как применить курсив?", "options": ["Ctrl+B", "Ctrl+J", "Ctrl+I", "Ctrl+U"], "answer": 2}, {"q": "Как подчеркнуть текст?", "options": ["Ctrl+R", "Ctrl+U", "Ctrl+I", "Ctrl+P"], "answer": 1}, {"q": "Как выровнять абзац по левому краю?", "options": ["Ctrl+E", "Ctrl+L", "Ctrl+J", "Ctrl+R"], "answer": 1}, {"q": "Как выровнять абзац по центру?", "options": ["Ctrl+L", "Ctrl+E", "Ctrl+J", "Ctrl+R"], "answer": 1}, {"q": "Как выровнять абзац по правому краю?", "options": ["Ctrl+J", "Ctrl+E", "Ctrl+R", "Ctrl+L"], "answer": 2}, {"q": "Как выровнять текст по ширине?", "options": ["Ctrl+R", "Ctrl+E", "Ctrl+L", "Ctrl+J"], "answer": 3}, {"q": "Где обычно меняют размер шрифта?", "options": ["На вкладке Рецензирование", "На вкладке Вид, в группе Окно", "На вкладке Главная, в группе Шрифт", "В меню Справка"], "answer": 2}, {"q": "Что такое гарнитура шрифта?", "options": ["Межстрочный интервал", "Цвет страницы", "Размер бумаги", "Название дизайна букв, например Arial"], "answer": 3}, {"q": "Что определяет размер шрифта?", "options": ["Цвет текста", "Ширину полей", "Высоту символов в типографских пунктах", "Количество страниц"], "answer": 2}, {"q": "Для чего нужна кнопка «Цвет выделения текста»?", "options": ["Удаляет форматирование", "Меняет цвет фона страницы", "Подсвечивает текст цветом", "Меняет цвет границ таблицы"], "answer": 2}, {"q": "Как изменить цвет самих букв?", "options": ["Использовать Цвет страницы", "Включить Режим чтения", "Использовать Цвет шрифта", "Изменить поля"], "answer": 2}, {"q": "Что делает команда «Очистить все форматирование»?", "options": ["Удаляет документ", "Меняет язык документа", "Сбрасывает прямое форматирование выделенного текста", "Удаляет весь текст"], "answer": 2}, {"q": "Что такое абзац в Word?", "options": ["Одна страница", "Только заголовок", "Фрагмент между нажатиями Enter", "Одна буква"], "answer": 2}, {"q": "Как начать новый абзац?", "options": ["Нажать Shift", "Нажать Tab дважды", "Нажать Esc", "Нажать Enter"], "answer": 3}, {"q": "Для чего используется Shift+Enter?", "options": ["Для вставки сноски", "Для разрыва страницы", "Для сохранения", "Для перехода на новую строку без нового абзаца"], "answer": 3}, {"q": "Что делает клавиша Tab в обычном тексте?", "options": ["Вставляет знак табуляции/переходит к следующей позиции табуляции", "Удаляет абзац", "Открывает печать", "Меняет регистр"], "answer": 0}, {"q": "Где можно настроить межстрочный интервал?", "options": ["Только в меню Файл", "В параметрах Абзац на вкладке Главная", "В группе Иллюстрации", "В строке состояния"], "answer": 1}, {"q": "Что такое отступ первой строки?", "options": ["Размер шрифта первой буквы", "Ширина колонтитула", "Расстояние от левого поля до первой строки абзаца", "Расстояние между страницами"], "answer": 2}, {"q": "Что такое маркёрованный список?", "options": ["Список страниц", "Список только с датами", "Список с символами перед пунктами", "Таблица без границ"], "answer": 2}, {"q": "Что такое нумерованный список?", "options": ["Список с изображениями", "Список без абзацев", "Список сносок", "Список с последовательной нумерацией пунктов"], "answer": 3}, {"q": "Как добавить таблицу?", "options": ["Главная → Найти", "Вставка → Таблица", "Рецензирование → Принять", "Вид → Линейка"], "answer": 1}, {"q": "Что называют ячейкой таблицы?", "options": ["Пересечение строки и столбца", "Заголовок окна", "Поле страницы", "Весь документ"], "answer": 0}, {"q": "Как добавить строку в таблицу?", "options": ["Нажать Ctrl+P", "Изменить масштаб", "Вставить колонтитул", "Использовать команды вставки строк на вкладке Макет таблицы"], "answer": 3}, {"q": "Как объединить несколько ячеек?", "options": ["Изменить ориентацию страницы", "Выделить их и выбрать Объединить ячейки", "Включить перенос слов", "Нажать Ctrl+S"], "answer": 1}, {"q": "Как изменить ширину столбца таблицы?", "options": ["Изменить цвет страницы", "Нажать F7", "Перетащить его границу или задать ширину в параметрах таблицы", "Изменить размер шрифта документа"], "answer": 2}, {"q": "Для чего нужна вкладка Вставка?", "options": ["Только для проверки орфографии", "Для добавления таблиц, рисунков, ссылок и других объектов", "Для закрытия документа", "Для выбора темы Windows"], "answer": 1}, {"q": "Как вставить изображение из файла?", "options": ["Главная → Стили", "Вставка → Рисунки/Изображения", "Вид → Область навигации", "Рецензирование → Новый комментарий"], "answer": 1}, {"q": "Что позволяет сделать обрезка рисунка?", "options": ["Проверить орфографию", "Удалить ненужные края изображения из отображаемой области", "Создать оглавление", "Изменить текст на картинке автоматически"], "answer": 1}, {"q": "Что такое обтекание текстом?", "options": ["Сохранение в PDF", "Нумерация страниц", "Способ расположения текста относительно рисунка или объекта", "Проверка грамматики"], "answer": 2}, {"q": "Для чего вставляют гиперссылку?", "options": ["Для сортировки абзацев", "Для удаления страницы", "Для изменения полей", "Для перехода к веб-странице, файлу, адресу или месту в документе"], "answer": 3}, {"q": "Как вставить гиперссылку сочетанием клавиш?", "options": ["Ctrl+K", "Ctrl+M", "Ctrl+Shift+S", "Alt+F4"], "answer": 0}, {"q": "Для чего нужны верхний и нижний колонтитулы?", "options": ["Для изменения ориентации текста в таблице", "Для повторяющейся информации вверху или внизу страниц", "Для вставки комментариев", "Для проверки доступности"], "answer": 1}, {"q": "Где обычно добавляют номер страницы?", "options": ["Рецензирование → Сравнить", "Вставка → Номер страницы", "Главная → Шрифт", "Макет → Поля"], "answer": 1}, {"q": "Что такое поле страницы?", "options": ["Пустое пространство между краем листа и областью текста", "Номер раздела", "Название шрифта", "Любая ячейка таблицы"], "answer": 0}, {"q": "Как изменить ориентацию страницы?", "options": ["Вставка → Символ", "Макет → Ориентация", "Вид → Линейка", "Главная → Стили"], "answer": 1}, {"q": "Какие основные варианты ориентации страницы есть в Word?", "options": ["Обычная и скрытая", "Цветная и чёрно-белая", "Большая и малая", "Книжная и альбомная"], "answer": 3}, {"q": "Где выбирают размер бумаги, например A4?", "options": ["Макет → Размер", "Рецензирование → Защитить", "Вставка → Объект", "Главная → Регистр"], "answer": 0}, {"q": "Что делает разрыв страницы?", "options": ["Уменьшает шрифт", "Скрывает абзац", "Начинает следующую часть документа с новой страницы", "Удаляет текущую страницу"], "answer": 2}, {"q": "Как вставить разрыв страницы сочетанием клавиш?", "options": ["Ctrl+Shift+S", "Ctrl+Enter", "Alt+Enter", "Shift+F7"], "answer": 1}, {"q": "Чем разрыв раздела отличается от разрыва страницы?", "options": ["Раздел позволяет отдельно задавать параметры форматирования частей документа", "Разрыв раздела всегда удаляет текст", "Разрыв страницы меняет язык", "Разницы нет"], "answer": 0}, {"q": "Для чего используют стили заголовков?", "options": ["Только для печати изображений", "Для единообразного оформления и структурирования документа", "Для шифрования файла", "Для создания формул"], "answer": 1}, {"q": "Что позволяет автоматически создать оглавление?", "options": ["Цвет текста", "Только ручные пробелы", "Наличие изображений", "Применённые к заголовкам встроенные стили заголовков"], "answer": 3}, {"q": "Где обычно вставляют автоматическое оглавление?", "options": ["Главная → Буфер обмена", "Вставка → Фигуры", "Ссылки → Оглавление", "Вид → Масштаб"], "answer": 2}, {"q": "Что нужно сделать после изменения заголовков, чтобы обновить оглавление?", "options": ["Закрыть Word без сохранения", "Переименовать файл", "Изменить цвет страницы", "Выбрать Обновить таблицу/оглавление"], "answer": 3}, {"q": "Что такое сноска?", "options": ["Название документа", "Верхний колонтитул", "Примечание, связанное с местом в основном тексте и обычно размещённое внизу страницы", "Скрытый рисунок"], "answer": 2}, {"q": "Где можно вставить обычную сноску?", "options": ["Макет → Поля", "Вид → Черновик", "Ссылки → Вставить сноску", "Главная → Заменить"], "answer": 2}, {"q": "Для чего предназначена проверка орфографии?", "options": ["Для подсчёта изображений", "Для обнаружения возможных орфографических и грамматических ошибок", "Для создания резервной копии", "Для изменения размера бумаги"], "answer": 1}, {"q": "Какая клавиша часто запускает проверку правописания в Word для Windows?", "options": ["F5", "F12", "F1", "F7"], "answer": 3}, {"q": "Что означает красное волнистое подчёркивание в Word?", "options": ["В документе есть гиперссылка", "Возможная орфографическая ошибка или неизвестное слово", "Текст обязательно удалён", "Включён режим печати"], "answer": 1}, {"q": "Для чего нужен режим «Исправления» (Track Changes)?", "options": ["Для автоматического перевода", "Для сжатия изображений", "Для блокировки клавиатуры", "Для отслеживания правок, внесённых в документ"], "answer": 3}, {"q": "Где обычно включают отслеживание исправлений?", "options": ["Рецензирование → Исправления", "Вид → Масштаб", "Файл → Печать", "Вставка → Таблица"], "answer": 0}, {"q": "Что такое комментарий в документе?", "options": ["Вид границы страницы", "Примечание рецензента, привязанное к фрагменту или месту", "Автоматическая нумерация", "Скрытый символ"], "answer": 1}, {"q": "Как принять исправление?", "options": ["Нажать Ctrl+P", "Сохранить как шаблон", "Использовать команду Принять на вкладке Рецензирование", "Изменить поля"], "answer": 2}, {"q": "Что делает команда «Сравнить» на вкладке Рецензирование?", "options": ["Сопоставляет две версии документа и показывает различия", "Сравнивает размеры шрифтов на экране", "Сортирует таблицу по цвету", "Проверяет подключение к интернету"], "answer": 0}, {"q": "Как посмотреть документ без большинства элементов редактирования?", "options": ["Открыть диспетчер задач", "Изменить расширение файла", "Переключиться в режим чтения", "Включить замену"], "answer": 2}, {"q": "Для чего нужен масштаб просмотра?", "options": ["Сжимает файл", "Меняет размер отображения документа на экране, не меняя размер печатного текста", "Меняет фактический размер шрифта", "Меняет размер бумаги"], "answer": 1}, {"q": "Что показывает строка состояния Word?", "options": ["Только дату создания компьютера", "Список установленных принтеров", "Пароль документа", "Например, номер страницы, число слов и язык проверки"], "answer": 3}, {"q": "Как узнать количество слов в документе?", "options": ["Включить режим чтения", "Посмотреть размер файла", "Открыть меню Ориентация", "Посмотреть статистику слов в строке состояния или открыть Счётчик слов"], "answer": 3}, {"q": "Что такое непечатаемые знаки?", "options": ["Текст, который нельзя выделить", "Ошибки принтера", "Символы форматирования, например пробелы, табуляции и знаки абзаца", "Скрытые изображения"], "answer": 2}, {"q": "Как показать или скрыть знаки форматирования?", "options": ["Кнопка ¶ на вкладке Главная", "Кнопка Оглавление", "Кнопка Печать", "Кнопка Масштаб"], "answer": 0}, {"q": "Для чего используется линейка Word?", "options": ["Для проверки орфографии", "Для настройки отступов и табуляции, а также визуального контроля разметки", "Для вставки формул", "Для отправки документа по почте"], "answer": 1}, {"q": "Как изменить регистр выделенного текста?", "options": ["Вид → Область навигации", "Главная → Регистр", "Вставка → Номер страницы", "Макет → Разрывы"], "answer": 1}, {"q": "Что делает команда «Формат по образцу»?", "options": ["Копирует весь текст", "Копирует форматирование одного фрагмента на другой", "Вставляет изображение", "Удаляет гиперссылки"], "answer": 1}, {"q": "Для чего нужна область навигации?", "options": ["Для управления принтером", "Для поиска текста и перехода по заголовкам или страницам", "Для изменения языка интерфейса Windows", "Для вставки таблиц"], "answer": 1}, {"q": "Как создать маркированный список с клавиатуры в начале строки?", "options": ["Набрать три запятые", "Нажать Ctrl+P", "Ввести * и пробел", "Ввести @ и Enter"], "answer": 2}, {"q": "Что такое шаблон Word?", "options": ["Только пустая страница", "Файл-заготовка с заранее заданной структурой и оформлением", "Список недавно открытых документов", "Любой файл PDF"], "answer": 1}, {"q": "Как сохранить документ под другим именем?", "options": ["Главная → Выделить", "Вид → Новое окно", "Рецензирование → Защитить", "Файл → Сохранить как"], "answer": 3}, {"q": "Какое сочетание часто открывает окно «Сохранить как» в Word для Windows?", "options": ["F1", "F12", "F4", "F7"], "answer": 1}, {"q": "В какой формат можно экспортировать документ для удобного просмотра и печати?", "options": [".exe", ".mp3", ".zip", "PDF"], "answer": 3}, {"q": "Что обычно сохраняет PDF при обмене документом?", "options": ["Макет страниц и внешний вид документа", "Только текст без форматирования", "Возможность редактировать как обычный DOCX без конвертации", "Историю всех нажатий клавиш"], "answer": 0}, {"q": "Что такое режим совместимости?", "options": ["Режим подключения к Wi-Fi", "Режим работы с документом старого формата, в котором часть новых функций может быть недоступна", "Режим проверки принтера", "Режим просмотра только изображений"], "answer": 1}, {"q": "Как защитить документ паролем средствами Word?", "options": ["Изменить цвет шрифта на белый", "Переименовать файл", "Свернуть окно", "Использовать Файл → Сведения → Защитить документ и параметры шифрования"], "answer": 3}, {"q": "Что следует сделать, чтобы не потерять изменения в документе?", "options": ["Удалить резервные копии", "Регулярно сохранять документ", "Отключить автосохранение", "Всегда держать Word открытым"], "answer": 1}, {"q": "Что такое автосохранение?", "options": ["Функция автоматического сохранения изменений, доступность которой зависит от места хранения и настроек", "Команда автоматической печати", "Автоматическая замена шрифта", "Режим полноэкранного просмотра"], "answer": 0}, {"q": "Как вставить символ, которого нет на клавиатуре?", "options": ["Главная → Сортировка", "Вид → Линейка", "Вставка → Символ", "Макет → Поля"], "answer": 2}, {"q": "Для чего нужна вкладка Формулы/Уравнение или команда вставки уравнения?", "options": ["Для добавления математических выражений в документ", "Для вставки номера страницы", "Для создания диаграмм из таблиц Excel автоматически", "Для проверки орфографии"], "answer": 0}, {"q": "Что можно вставить с помощью команды Фигуры?", "options": ["Геометрические фигуры, стрелки и блок-схемы", "Только аудиофайлы", "Только сноски", "Только страницы PDF"], "answer": 0}, {"q": "Для чего используется SmartArt?", "options": ["Для создания наглядных схем процессов, иерархий и взаимосвязей", "Для нумерации строк", "Для сжатия документа", "Для проверки грамматики"], "answer": 0}, {"q": "Что позволяет сделать команда «Сортировка» для текста или таблицы?", "options": ["Упорядочить элементы, например по алфавиту или числам", "Зашифровать файл", "Удалить все пробелы", "Изменить ориентацию страницы"], "answer": 0}, {"q": "Как вставить текущую дату как поле, которое может обновляться?", "options": ["Главная → Полужирный", "Макет → Размер", "Рецензирование → Принять", "Вставка → Дата и время и выбрать обновление автоматически"], "answer": 3}, {"q": "Что такое закладка в Word?", "options": ["Тип шрифта", "Скрытый комментарий", "Пароль для открытия файла", "Именованная отметка места в документе для быстрого перехода или ссылки"], "answer": 3}, {"q": "Для чего используется перекрёстная ссылка?", "options": ["Для вставки водяного знака", "Для изменения языка интерфейса", "Для ссылки на элемент документа, например заголовок, рисунок или таблицу", "Для создания копии файла"], "answer": 2}, {"q": "Что такое водяной знак?", "options": ["Номер строки в таблице", "Полупрозрачный текст или изображение на фоне страниц", "Вид курсора", "Способ выравнивания абзаца"], "answer": 1}, {"q": "Где обычно добавляют водяной знак?", "options": ["Главная → Найти", "Конструктор/Дизайн → Подложка или Водяной знак", "Вставка → Сноска", "Рецензирование → Статистика"], "answer": 1}];
+const TOTAL_SECONDS = 60 * 60;
+let current = 0, answers = Array(QUESTIONS.length).fill(null), flagged = new Set();
+let remaining = TOTAL_SECONDS, timerId = null, finished = false;
+
+const $ = id => document.getElementById(id);
+function renderQuestion(){
+  const item = QUESTIONS[current];
+  $('counter').textContent = `${current+1} / ${QUESTIONS.length}`;
+  $('questionLabel').textContent = `Вопрос ${current+1}`;
+  $('questionText').textContent = item.q;
+  $('answers').innerHTML = '';
+  item.options.forEach((option, idx) => {
+    const label = document.createElement('label');
+    label.className = 'answer' + (answers[current] === idx ? ' selected' : '');
+    const radio = document.createElement('input');
+    radio.type = 'radio'; radio.name = 'answer'; radio.checked = answers[current] === idx;
+    radio.addEventListener('change', () => { answers[current] = idx; renderQuestion(); });
+    const letter = document.createElement('span'); letter.className='letter'; letter.textContent = String.fromCharCode(65+idx)+'.';
+    const text = document.createElement('span'); text.textContent = option;
+    label.append(radio, letter, text); $('answers').append(label);
+  });
+  $('prevBtn').disabled = current === 0;
+  $('nextBtn').textContent = current === QUESTIONS.length-1 ? 'К навигации' : 'Далее →';
+  $('flagBtn').textContent = flagged.has(current) ? '★ Снять отметку' : '☆ Отметить';
+  updateStatus(); renderGrid();
+}
+function updateStatus(){
+  const count = answers.filter(v=>v!==null).length;
+  $('answered').textContent = `${count} / ${QUESTIONS.length}`;
+  $('sideCount').textContent = `${count}/${QUESTIONS.length}`;
+  $('progressBar').style.width = `${count/QUESTIONS.length*100}%`;
+}
+function renderGrid(){
+  const grid=$('questionGrid'); grid.innerHTML='';
+  QUESTIONS.forEach((_,i)=>{
+    const b=document.createElement('button'); b.className='qnum';
+    if(answers[i]!==null)b.classList.add('done');
+    if(flagged.has(i))b.classList.add('flagged');
+    if(i===current)b.classList.add('current');
+    b.textContent=i+1; b.setAttribute('aria-label',`Перейти к вопросу ${i+1}`);
+    b.addEventListener('click',()=>{current=i;renderQuestion();});
+    grid.append(b);
+  });
+}
+function updateTimer(){
+  const m=Math.floor(remaining/60), s=remaining%60;
+  $('timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  $('timer').classList.toggle('warning',remaining<=300);
+  if(remaining<=0){clearInterval(timerId);finishTest(true);}
+}
+function startTest(){
+  $('intro').classList.add('hidden'); $('exam').classList.remove('hidden');
+  renderQuestion(); updateTimer();
+  timerId=setInterval(()=>{remaining--;updateTimer();},1000);
+}
+function finishTest(timeUp=false){
+  if(finished)return;
+  const unanswered=answers.filter(v=>v===null).length;
+  if(!timeUp && !confirm(`Завершить тест? Без ответа: ${unanswered}. После завершения изменить ответы нельзя.`))return;
+  finished=true; clearInterval(timerId); $('exam').classList.add('hidden'); $('results').classList.remove('hidden');
+  let correct=0;
+  QUESTIONS.forEach((q,i)=>{if(answers[i]===q.answer)correct++;});
+  const wrong=answers.filter(v=>v!==null).length-correct;
+  const pct=Math.round(correct/QUESTIONS.length*100);
+  $('score').textContent=pct+'%';
+  $('correctCount').textContent=correct; $('wrongCount').textContent=wrong; $('blankCount').textContent=unanswered;
+  $('resultTitle').textContent=timeUp?'Время вышло':'Тест завершён';
+  $('resultText').textContent=`Ваш результат: ${correct} из ${QUESTIONS.length}. ${pct>=90?'Отличный результат!':pct>=70?'Хорошая работа!':pct>=50?'Есть хорошая база, но некоторые темы стоит повторить.':'Рекомендуем повторить основные функции Microsoft Word и пройти тест ещё раз.'}`;
+  buildReview();
+}
+function buildReview(){
+  const box=$('review'); box.innerHTML='<h3>Разбор всех вопросов</h3>';
+  QUESTIONS.forEach((q,i)=>{
+    const div=document.createElement('div'); div.className='review-item';
+    const h=document.createElement('h4'); h.textContent=`${i+1}. ${q.q}`;
+    const p=document.createElement('p');
+    const chosen=answers[i];
+    if(chosen===q.answer){p.className='good';p.textContent='Ваш ответ: '+q.options[q.answer]+' — верно.';}
+    else{
+      p.className='bad';
+      p.textContent='Ваш ответ: '+(chosen===null?'нет ответа':q.options[chosen])+'. Правильный ответ: '+q.options[q.answer]+'.';
+    }
+    div.append(h,p);box.append(div);
+  });
+}
+$('startBtn').addEventListener('click',startTest);
+$('prevBtn').addEventListener('click',()=>{if(current>0){current--;renderQuestion();}});
+$('nextBtn').addEventListener('click',()=>{if(current<QUESTIONS.length-1){current++;renderQuestion();}else{$('questionGrid').scrollIntoView({behavior:'smooth',block:'center'});}});
+$('flagBtn').addEventListener('click',()=>{flagged.has(current)?flagged.delete(current):flagged.add(current);renderQuestion();});
+$('finishBtn').addEventListener('click',()=>finishTest(false));
+$('reviewBtn').addEventListener('click',()=>{$('review').classList.toggle('hidden');$('reviewBtn').textContent=$('review').classList.contains('hidden')?'Посмотреть разбор':'Скрыть разбор';});
+$('restartBtn').addEventListener('click',()=>location.reload());
+</script>
+</body>
+</html>
